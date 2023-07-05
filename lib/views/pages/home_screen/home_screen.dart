@@ -17,15 +17,15 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-        backgroundColor:Colors.transparent,
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: Icon(Icons.grid_view_rounded),
+          leading: const Icon(Icons.grid_view_rounded),
           actions: [
             Container(
-              margin: EdgeInsets.only(right: 20),
-              child: CircleAvatar(
+              margin: const EdgeInsets.only(right: 20),
+              child: const CircleAvatar(
                 backgroundImage: NetworkImage(
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf7cjBh8rg0Pbd7o0YmzdiVtvQSFGFo3AIeCrFI494&s"),
               ),
@@ -59,11 +59,88 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: SingleChildScrollView(
-          child:Column(children: [
-            Text("Enjoy your favorite music")
-          ],),
+          child: Container(
+            margin: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _DiscoverMusic(),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Trending Music",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "View More",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(fontSize: 15),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
         ),
       ),
+    );
+  }
+}
+
+class _DiscoverMusic extends StatelessWidget {
+  const _DiscoverMusic({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Welcome",
+          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18),
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Text(
+          "Enjoy your favorite music",
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        TextFormField(
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            hintText: "Search",
+            isDense: true,
+            hintStyle: Theme.of(context).textTheme.titleLarge!.copyWith(
+                  color: Colors.grey.shade400,
+                ),
+            prefixIcon: Icon(
+              Icons.search,
+              color: Colors.grey.shade400,
+            ),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: BorderSide.none,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -10,7 +10,7 @@ class AppTheme {
 class AppTextTheme {
   static final lightTheme = TextTheme(
     titleLarge:
-        GoogleFonts.poppins(backgroundColor: Colors.white, color: Colors.white),
+        GoogleFonts.poppins(color: Colors.white),
   );
   static final darkTheme = TextTheme(
     titleLarge:
