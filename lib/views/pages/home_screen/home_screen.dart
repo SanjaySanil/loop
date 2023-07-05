@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:loop/views/pages/home_screen/widgets/songs_card.dart';
+import 'package:loop/views/widgets/section_header.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -61,36 +63,49 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             margin: const EdgeInsets.all(12),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _DiscoverMusic(),
-                const SizedBox(
+                SizedBox(
                   height: 20,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Trending Music",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "View More",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontSize: 15),
+                    SectionHeader(title: "Trending Music"),
+                    SectionHeader(
+                      title: "View More",
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
                     ),
                   ],
-                )
+                ),
+                SizedBox(height:20),
+                _TrendingMusic()
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _TrendingMusic extends StatelessWidget {
+  const _TrendingMusic({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height:MediaQuery.of(context).size.height*0.27,
+      child: ListView.builder(
+        shrinkWrap:true,
+        scrollDirection: Axis.horizontal,
+        itemCount: 5,
+        itemBuilder: (context, index) => const SongsCard()
       ),
     );
   }
@@ -104,20 +119,15 @@ class _DiscoverMusic extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Welcome",
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18),
+        const SectionHeader(
+          title: "Welcome",
+          fontSize: 18,
+          fontWeight: FontWeight.normal,
         ),
         const SizedBox(
           height: 5,
         ),
-        Text(
-          "Enjoy your favorite music",
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(fontWeight: FontWeight.bold),
-        ),
+        const SectionHeader(title: "Enjoy your favorite music"),
         const SizedBox(
           height: 10,
         ),
