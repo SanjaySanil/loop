@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loop/views/pages/home_screen/widgets/playlist_card.dart';
 import 'package:loop/views/pages/home_screen/widgets/songs_card.dart';
 import 'package:loop/views/widgets/section_header.dart';
 
@@ -63,7 +65,7 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Container(
             margin: const EdgeInsets.all(12),
-            child: const Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _DiscoverMusic(),
@@ -81,8 +83,24 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height:20),
-                _TrendingMusic()
+                SizedBox(height: 20),
+                _TrendingMusic(),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SectionHeader(title: "Playlists"),
+                    SectionHeader(
+                      title: "View More",
+                      fontSize: 15,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ],
+                ),
+                SizedBox(height:10),
+                SizedBox(
+                  child: PlaylistCard(),
+                ),
               ],
             ),
           ),
@@ -92,6 +110,7 @@ class HomeScreen extends StatelessWidget {
   }
 }
 
+
 class _TrendingMusic extends StatelessWidget {
   const _TrendingMusic({
     super.key,
@@ -100,13 +119,12 @@ class _TrendingMusic extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height:MediaQuery.of(context).size.height*0.27,
+      height: MediaQuery.of(context).size.height * 0.27,
       child: ListView.builder(
-        shrinkWrap:true,
-        scrollDirection: Axis.horizontal,
-        itemCount: 5,
-        itemBuilder: (context, index) => const SongsCard()
-      ),
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: 5,
+          itemBuilder: (context, index) => const SongsCard()),
     );
   }
 }

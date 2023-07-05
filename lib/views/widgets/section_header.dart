@@ -17,6 +17,7 @@ class SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
+      maxLines:2,
       style: Theme.of(context)
           .textTheme
           .titleLarge!
